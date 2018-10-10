@@ -422,7 +422,7 @@ public class FaceApi {
         }
         List<Feature> featureList = DBManager.getInstance().queryFeatureByGroupId(groupId);
 
-        HashMap<String, byte[]> userId2Feature = new HashMap<String, byte[]>();
+        HashMap<String, byte[]> userId2Feature = new HashMap<>();
         for (Feature feature : featureList) {
             userId2Feature.put(feature.getUserId(), feature.getFeature());
             Log.i("wtf", " loadFeature2Memery feature " + feature.getFeature());

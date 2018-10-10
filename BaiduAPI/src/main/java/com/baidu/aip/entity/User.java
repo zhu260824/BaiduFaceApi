@@ -67,4 +67,16 @@ public class User {
     public void setFeatureList(List<Feature> featureList) {
         this.featureList = featureList;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", userInfo='" + userInfo + '\'' +
+                ", groupId='" + groupId + '\'' +
+                ", ctime=" + ctime +
+                ", updateTime=" + updateTime +
+                ", featureList=" + featureList +
+                '}';
+    }
 }

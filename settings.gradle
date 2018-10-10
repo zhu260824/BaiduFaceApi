@@ -1,1 +1,1 @@
-include ':app', ':BaiduAPI'
+include ':app', ':BaiduAPI', ':FaceSDK_BaiDu'
