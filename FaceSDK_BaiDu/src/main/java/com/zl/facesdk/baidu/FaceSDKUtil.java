@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.baidu.idl.facesdk.FaceInfo;
 import com.zl.facesdk.baidu.api.FaceApi;
+import com.zl.facesdk.baidu.db.DBManager;
 import com.zl.facesdk.baidu.entity.ARGBImg;
 import com.zl.facesdk.baidu.entity.AddResult;
 import com.zl.facesdk.baidu.entity.Feature;
@@ -184,6 +185,18 @@ public class FaceSDKUtil {
             }
         } else {
             return AddResult.getNotRule("图片抽取特征值失败");
+        }
+    }
+
+    public static AddResult deleteFeaturer(String groupId, String userId, String faceToken) {
+        if (TextUtils.isEmpty(userId) || TextUtils.isEmpty(groupId) || TextUtils.isEmpty(faceToken)) {
+            return AddResult.getNotNull("userid或groupId或faceToken不能为空");
+        }
+        boolean ret = DBManager.getInstance().deleteFeature(userId, groupId, faceToken);
+        if (ret) {
+            return AddResult.getSuccess();
+        } else {
+            return AddResult.getErroeDB("数据库添加错误");
         }
     }
 
