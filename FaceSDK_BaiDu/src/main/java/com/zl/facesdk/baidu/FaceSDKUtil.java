@@ -17,6 +17,7 @@ import com.zl.facesdk.baidu.manger.FaceDetector;
 import com.zl.facesdk.baidu.manger.FaceLiveness;
 import com.zl.facesdk.baidu.manger.FaceSDKManager;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -198,6 +199,22 @@ public class FaceSDKUtil {
         } else {
             return AddResult.getErroeDB("数据库添加错误");
         }
+    }
+
+    public static List<Feature> queryFeatureByUeserId(String userId) {
+        if (TextUtils.isEmpty(userId)) {
+            return null;
+        }
+        List<Feature> features = DBManager.getInstance().queryFeatureByUeserId(userId);
+        return features;
+    }
+
+    public static List<Feature> queryFeature(String groupId, String userId) {
+        if (TextUtils.isEmpty(userId)) {
+            return null;
+        }
+        List<Feature> features = DBManager.getInstance().queryFeature(groupId, userId);
+        return features;
     }
 
 }
