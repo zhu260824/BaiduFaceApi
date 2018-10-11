@@ -54,6 +54,16 @@ public class FaceSDKUtil {
         identityStatus = IDENTITY_IDLE;
     }
 
+    public static void reloadFeature2Memery(String groupId) {
+        identityStatus = FEATURE_DATAS_UNREADY;
+        FaceSDKUtil.groupId = groupId;
+        FaceApi.getInstance().reloadFacesFromDB(groupId);
+        Log.i(TAG, "人脸数据加载完成，即将开始1：N");
+        int count = FaceApi.getInstance().getGroup2Facesets().get(groupId).size();
+        Log.i(TAG, "底库人脸个数：" + count);
+        identityStatus = IDENTITY_IDLE;
+    }
+
     public static IdentifyRet identity(ARGBImg argbImg, FaceInfo faceInfo) {
         if (identityStatus != IDENTITY_IDLE || null == argbImg || null == faceInfo) {
             return null;
