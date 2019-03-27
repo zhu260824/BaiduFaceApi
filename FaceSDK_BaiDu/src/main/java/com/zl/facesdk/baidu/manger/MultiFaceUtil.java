@@ -98,7 +98,7 @@ public class MultiFaceUtil {
 
     private float getLive(ARGBImg argbImg, FaceInfo faceInfo) {
         long startTime3 = System.currentTimeMillis();
-        float score = FaceSDK.run_livenessSilentPredict(FaceSDK.LivenessTypeId.LIVEID_VIS, getLiveIndex()cvD, argbImg.data, argbImg.height, argbImg.width, 24, faceInfo.landmarks);
+        float score = FaceSDK.run_livenessSilentPredict(FaceSDK.LivenessTypeId.LIVEID_VIS, getLiveIndex(), argbImg.data, argbImg.height, argbImg.width, 24, faceInfo.landmarks);
         long livenessDuration = System.currentTimeMillis() - startTime3;
         Log.e(TAG, "活体检测的时间" + livenessDuration);
         return score;
